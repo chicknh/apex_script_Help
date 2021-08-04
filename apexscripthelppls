@@ -1,0 +1,49 @@
+*NOT EVERYTHING FROM THE CODE*
+
+Gui, Font, s11
+Gui, Add, Text, x10 y+5, Sensivity Slider
+
+Gui, Font, cPurple
+Gui, add, Slider, 			w300	vSlider	gSlide 	Range1-100 tickinterval1-100 AltSubmit
+Gui, Font, s9
+Gui, add, text,				w50	h18									, 0.1
+Gui, add, text,	x+200		w50	h18					Right			, 10
+Gui, add, text, x10	  y+5											, ADS-Sens:
+Gui, add, Edit,	x10		w70		vValue							, 0.1
+Gui, add, Button, x90 y683 h18 w70, Apply
+Gui, Submit
+
+Slide:
+	Gui,Submit,NoHide
+	int := slider/10
+	fra := Mod(int, 10)
+	fra := SubStr(fra, InStr(fra,".")+1, 1 )
+	val :=  Floor(int) "." fra
+	
+	GuiControl,, Edit1, %val%
+
+Gui, Font, s7
+Gui, Add, Text, x10 y+5, [CREDITS]
+Gui, Add, Text, x10 y+5, Chicknh
+
+Gui, -AlwaysOnTop
+Gui, Color, Black
+Gui, Show, w320 h765, [WIP]
+return
+ 
+SetBatchLines -1                        ;removes default 10ms delay between lines 
+#MaxHotkeysPerInterval 99000000
+#HotkeyInterval 99000000
+#KeyHistory 0
+ListLines Off
+SetKeyDelay, -1, -1
+SetMouseDelay, -1
+SetDefaultMouseSpeed, 0
+SetWinDelay, -1
+;if not A_IsAdmin {
+;   Run *RunAs "%A_ScriptFullPath%"  
+;   ExitApp
+;}
+ 
+;-----Settings-----
+sens:=2.5 ; I NEED THE SLIDER TO CHANGE THIS SETTING
